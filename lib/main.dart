@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/pages/index_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,13 +11,9 @@ class MyApp extends StatelessWidget {
         title: "毕业设计",
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: Color.fromRGBO(0, 169, 172, 1),
+//          primaryColor: Color.fromRGBO(237, 237, 237, 1),
         ),
-        home: Scaffold(
-          body: Center(
-            child: Text('hello world'),
-          ),
-        ),
+        home: IndexPage(),
       ),
     );
   }
