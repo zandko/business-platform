@@ -13,6 +13,7 @@ class IndexPage extends StatefulWidget {
 }
 
 class _IndexPageState extends State<IndexPage> {
+  // 底部导航对应的页面
   final List<Widget> tabBodies = [
     HomePage(),
     CategoryPage(),
@@ -21,17 +22,18 @@ class _IndexPageState extends State<IndexPage> {
     MinePage()
   ];
 
-  final PageController topPageControl = new PageController();
+//  final PageController topPageControl = new PageController();
 
   final _bottomNavigationColor = Color(0xFF585858);
   Color _bottomNavigationActiveColor = Colors.blue;
   int _currentIndex = 0;
 
-  var _controller = PageController(
+  static PageController _controller = new PageController(
     initialPage: 0,
   );
 
   @override
+  // 这个函数会紧跟在initState之后调用 可以跨组件拿到数据
   void didChangeDependencies() {
     super.didChangeDependencies();
 
@@ -45,7 +47,7 @@ class _IndexPageState extends State<IndexPage> {
       body: PageView(
         controller: _controller,
         children: tabBodies,
-        physics: NeverScrollableScrollPhysics(),
+        physics: NeverScrollableScrollPhysics(), // 不允许滑动
       ),
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

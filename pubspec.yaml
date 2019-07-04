@@ -29,6 +29,7 @@ dependencies:
   flutter_screenutil: ^0.5.3
   flutter_easyrefresh: ^1.2.7
   shared_preferences: ^0.5.3+1
+  cached_network_image: ^1.0.0
 
 dev_dependencies:
   flutter_test:

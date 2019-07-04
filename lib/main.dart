@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: GZColors.primarySwatch,
-//          primaryColor: Color.fromRGBO(237, 237, 237, 1),
         ),
         home: IndexPage(),
       ),
