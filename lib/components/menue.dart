@@ -20,7 +20,6 @@ class HomeKingKongWidget extends StatelessWidget {
             width: ScreenUtil.getInstance().setWidth(116),
             height: ScreenUtil.getInstance().setHeight(94),
             imageUrl: data.picUrl,
-            placeholder: (context, url) => CircularProgressIndicator(),
             errorWidget: (context, url, error) => Icon(Icons.error),
           ),
           Text(
