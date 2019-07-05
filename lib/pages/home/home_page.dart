@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:shop_app/style/style.dart';
 import 'package:shop_app/data/home.dart';
 import 'package:shop_app/utils/log_util.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:shop_app/components/topbar.dart';
 import 'package:shop_app/tools/arc_clipper.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shop_app/model/kingkong.dart';
+import 'package:shop_app/model/tab.dart';
+import 'package:shop_app/components/cache_network_image.dart';
+import 'package:shop_app/components/topbar.dart';
 import 'package:shop_app/components/menue.dart';
+import 'package:shop_app/components/tabbar.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,6 +25,10 @@ class _HomePageState extends State<HomePage>
   ScrollController _scrollViewController;
   GlobalKey _keyFilter = GlobalKey();
   Size _sizeRed;
+  TabController _controller;
+  List<TabModel> _tabModels = [];
+  int _currentIndex = 0;
+  List _hotWords = [];
 
   String get hoursString {
     Duration duration =
@@ -73,7 +79,25 @@ class _HomePageState extends State<HomePage>
             ? 1.0
             : _animationController.value);
 
+    _tabModels.add(TabModel(title: '全部', subtitle: '猜你喜欢'));
+    _tabModels.add(TabModel(title: '直播', subtitle: '网红推荐'));
+    _tabModels.add(TabModel(title: '便宜好货', subtitle: '低价抢购'));
+    _tabModels.add(TabModel(title: '买家秀', subtitle: '购后分享'));
+    _tabModels.add(TabModel(title: '全球', subtitle: '进口好货'));
+    _tabModels.add(TabModel(title: '生活', subtitle: '享受生活'));
+    _tabModels.add(TabModel(title: '母婴', subtitle: '母婴大赏'));
+    _tabModels.add(TabModel(title: '时尚', subtitle: '时尚好货'));
+    _controller = TabController(vsync: this, length: 8);
+    _controller.addListener(_handleTabSelection);
+
     WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+  }
+
+  _handleTabSelection() {
+    print('_handleTabSelection:${_controller.index}');
+    setState(() {
+      _currentIndex = _controller.index;
+    });
   }
 
   Widget build(BuildContext context) {
@@ -83,7 +107,6 @@ class _HomePageState extends State<HomePage>
         _buildSwiperButtonWidget(),
         _buildNewspaperWidget(),
         _buildRecommendGoodsWidget(),
-        _buildAd1vertisingWidget(),
         _buildAd2vertisingWidget(),
         _buildSpikeWidget(),
         _buildAd3vertisingWidget(),
@@ -108,16 +131,38 @@ class _HomePageState extends State<HomePage>
             ),
             expandedHeight: (_sizeRed == null
                 ? MediaQuery.of(context).size.height
-                : _sizeRed.height),
-//            bottom: PreferredSize(
-//              preferredSize: Size(double.infinity, 46),
-//            ),
+                : _sizeRed.height + ScreenUtil.getInstance().setHeight(96)),
+            bottom: PreferredSize(
+              preferredSize: Size(
+                double.infinity,
+                ScreenUtil.getInstance().setHeight(92),
+              ),
+              child: GZTabBarWidget(
+                tabController: _controller,
+                tabModels: _tabModels,
+                currentIndex: _currentIndex,
+              ),
+            ),
           ),
         ];
       },
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
+      body: _hotWords.length == 1
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : TabBarView(
+              controller: _controller,
+              children: <Widget>[
+                Text('全部'),
+                Text('直播'),
+                Text('便宜好货'),
+                Text('买家秀'),
+                Text('全球'),
+                Text('生活'),
+                Text('母婴'),
+                Text('时尚'),
+              ],
+            ),
     );
     return Scaffold(
       backgroundColor: GZColors.mainBackgroundColor,
@@ -145,6 +190,7 @@ class _HomePageState extends State<HomePage>
     );
   }
 
+  // 轮播图
   Widget _buildSwiperImageWidget() {
     return Container(
       height: 150.0,
@@ -170,12 +216,8 @@ class _HomePageState extends State<HomePage>
                   children: <Widget>[
                     Container(
                       height: 150,
-                      child: CachedNetworkImage(
-                        fadeOutDuration: const Duration(milliseconds: 300),
-                        fadeInDuration: const Duration(milliseconds: 700),
-                        fit: BoxFit.fill,
+                      child: GZCacheNetworkImageWidget(
                         imageUrl: banner_images[index],
-                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     ),
                   ],
@@ -188,6 +230,7 @@ class _HomePageState extends State<HomePage>
     );
   }
 
+  // 菜单栏
   Widget _buildSwiperButtonWidget() {
     List data = [];
     for (var i = 0; i < kingKongItems.length; ++i) {
@@ -209,6 +252,7 @@ class _HomePageState extends State<HomePage>
     );
   }
 
+  // 商城早报
   Widget _buildNewspaperWidget() {
     return Container(
       margin: EdgeInsets.only(
@@ -269,6 +313,7 @@ class _HomePageState extends State<HomePage>
     );
   }
 
+  // 推荐商品
   Widget _buildRecommendGoodsWidget() {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -281,12 +326,8 @@ class _HomePageState extends State<HomePage>
             ),
             width: ScreenUtil.getInstance().setWidth(373),
             height: ScreenUtil.getInstance().setHeight(534),
-            child: CachedNetworkImage(
-              fadeOutDuration: const Duration(milliseconds: 300),
-              fadeInDuration: const Duration(milliseconds: 700),
-              fit: BoxFit.fill,
+            child: GZCacheNetworkImageWidget(
               imageUrl: 'https://i1.mifile.cn/a4/xmad_15592788710155_nYAat.jpg',
-              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
           Column(
@@ -294,13 +335,9 @@ class _HomePageState extends State<HomePage>
               Container(
                 width: ScreenUtil.getInstance().setWidth(367),
                 height: ScreenUtil.getInstance().setHeight(258),
-                child: CachedNetworkImage(
-                  fadeOutDuration: const Duration(milliseconds: 300),
-                  fadeInDuration: const Duration(milliseconds: 700),
-                  fit: BoxFit.fill,
+                child: GZCacheNetworkImageWidget(
                   imageUrl:
                       'https://i1.mifile.cn/a4/xmad_15621496532895_qtPax.jpg',
-                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
               Container(
@@ -309,13 +346,9 @@ class _HomePageState extends State<HomePage>
                 ),
                 width: ScreenUtil.getInstance().setWidth(367),
                 height: ScreenUtil.getInstance().setHeight(264),
-                child: CachedNetworkImage(
-                  fadeOutDuration: const Duration(milliseconds: 300),
-                  fadeInDuration: const Duration(milliseconds: 700),
-                  fit: BoxFit.fill,
+                child: GZCacheNetworkImageWidget(
                   imageUrl:
                       'https://i1.mifile.cn/a4/xmad_15622932130351_aJFEP.jpg',
-                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
             ],
@@ -325,23 +358,7 @@ class _HomePageState extends State<HomePage>
     );
   }
 
-  Widget _buildAd1vertisingWidget() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(
-        top: ScreenUtil.getInstance().setHeight(26),
-      ),
-      height: ScreenUtil.getInstance().setHeight(288),
-      child: CachedNetworkImage(
-        fadeOutDuration: const Duration(milliseconds: 300),
-        fadeInDuration: const Duration(milliseconds: 700),
-        fit: BoxFit.fill,
-        imageUrl: 'https://i1.mifile.cn/a4/xmad_15617044776801_SBenC.jpg',
-        errorWidget: (context, url, error) => Icon(Icons.error),
-      ),
-    );
-  }
-
+  // 广告位
   Widget _buildAd2vertisingWidget() {
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -349,41 +366,180 @@ class _HomePageState extends State<HomePage>
         top: ScreenUtil.getInstance().setHeight(26),
       ),
       height: ScreenUtil.getInstance().setHeight(288),
-      child: CachedNetworkImage(
-        fadeOutDuration: const Duration(milliseconds: 300),
-        fadeInDuration: const Duration(milliseconds: 700),
-        fit: BoxFit.fill,
+      child: GZCacheNetworkImageWidget(
         imageUrl: 'https://i1.mifile.cn/a4/xmad_15621639904412_QuMpy.jpg',
-        errorWidget: (context, url, error) => Icon(Icons.error),
       ),
     );
   }
 
+  // 广告位
   Widget _buildAd3vertisingWidget() {
     return Container(
-      width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(
-        top: ScreenUtil.getInstance().setHeight(26),
+        bottom: ScreenUtil.getInstance().setHeight(26),
       ),
+      width: MediaQuery.of(context).size.width,
       height: ScreenUtil.getInstance().setHeight(288),
-      child: CachedNetworkImage(
-        fadeOutDuration: const Duration(milliseconds: 300),
-        fadeInDuration: const Duration(milliseconds: 700),
-        fit: BoxFit.fill,
+      child: GZCacheNetworkImageWidget(
         imageUrl: 'https://i1.mifile.cn/a4/xmad_15517943282724_lhogK.jpg',
-        errorWidget: (context, url, error) => Icon(Icons.error),
       ),
     );
   }
 
+  // 秒杀
   Widget _buildSpikeWidget() {
-    List data = [];
-    for (var i = 0; i < kingKongItems.length; ++i) {
-      data.add(kingKongItems[i]);
-    }
+    Widget Countown = Stack(
+      alignment: Alignment.centerLeft,
+      children: <Widget>[
+        Container(
+          width: ScreenUtil.getInstance().setWidth(158),
+          child: Text(
+            '小米秒杀',
+            style: TextStyle(
+              fontSize: ScreenUtil.getInstance().setSp(28),
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(254, 115, 21, 1),
+            ),
+          ),
+        ),
+        Positioned(
+          right: ScreenUtil.getInstance().setWidth(22),
+          child: AnimatedBuilder(
+            animation: _animationController,
+            builder: (_, Widget child) {
+              return Row(
+                children: <Widget>[
+                  Text(
+                    '距下一场',
+                    style: TextStyle(
+                      fontSize: ScreenUtil.getInstance().setSp(28),
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(80, 80, 80, 1),
+                    ),
+                  ),
+                  SizedBox(
+                    width: ScreenUtil.getInstance().setWidth(14),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: Container(
+                      color: Color.fromRGBO(128, 128, 128, 1),
+                      child: Text(
+                        hoursString,
+                        style: TextStyle(
+                          fontSize: ScreenUtil.getInstance().setSp(24),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: ScreenUtil.getInstance().setWidth(8),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: Container(
+                      color: Color.fromRGBO(128, 128, 128, 1),
+                      child: Text(
+                        minutesString,
+                        style: TextStyle(
+                          fontSize: ScreenUtil.getInstance().setSp(24),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: ScreenUtil.getInstance().setWidth(8),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(3),
+                    child: Container(
+                      color: Color.fromRGBO(128, 128, 128, 1),
+                      child: Text(
+                        secondsString,
+                        style: TextStyle(
+                          fontSize: ScreenUtil.getInstance().setSp(24),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ],
+    );
+    Widget SpikeGoods = Row(
+      children: [1, 2, 3, 4, 5, 6, 7, 8].map((item) {
+        return Container(
+          width: ScreenUtil.getInstance().setWidth(192),
+          height: ScreenUtil.getInstance().setHeight(264),
+          margin: EdgeInsets.only(
+            right: ScreenUtil.getInstance().setWidth(16),
+          ),
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: ScreenUtil.getInstance().setWidth(192),
+                height: ScreenUtil.getInstance().setHeight(192),
+                child: GZCacheNetworkImageWidget(
+                  imageUrl:
+                      'https://img.alicdn.com/tfscom/i1/TB1e3Heo_JYBeNjy1zeYXGhzVXa_M2.SS2_360x360xzq90.jpg_.webp',
+                ),
+              ),
+              SizedBox(
+                height: ScreenUtil.getInstance().setHeight(16),
+              ),
+              Container(
+                width: ScreenUtil.getInstance().setWidth(192),
+                height: ScreenUtil.getInstance().setHeight(54),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      '￥69',
+                      style: TextStyle(
+                        fontSize: ScreenUtil.getInstance().setSp(36),
+                        color: Color.fromRGBO(254, 115, 21, 1),
+                      ),
+                    ),
+                    SizedBox(
+                      width: ScreenUtil.getInstance().setWidth(10),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: ScreenUtil.getInstance().setHeight(14),
+                      ),
+                      child: Text(
+                        '￥169',
+                        style: TextStyle(
+                          fontSize: ScreenUtil.getInstance().setSp(20),
+                          color: Color.fromRGBO(80, 80, 80, 0.43),
+                          decoration: TextDecoration.lineThrough,
+                          decorationColor: Color.fromRGBO(80, 80, 80, 0.43),
+                          decorationStyle: TextDecorationStyle.solid,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
     return Container(
       margin: EdgeInsets.only(
         top: ScreenUtil.getInstance().setHeight(26),
+        bottom: ScreenUtil.getInstance().setHeight(26),
       ),
       padding: EdgeInsets.only(
         left: ScreenUtil.getInstance().setWidth(18),
@@ -394,163 +550,11 @@ class _HomePageState extends State<HomePage>
           Container(
             width: MediaQuery.of(context).size.width,
             height: ScreenUtil.getInstance().setHeight(72),
-            child: Stack(
-              alignment: Alignment.centerLeft,
-              children: <Widget>[
-                Container(
-                  width: ScreenUtil.getInstance().setWidth(158),
-                  child: Text(
-                    '小米秒杀',
-                    style: TextStyle(
-                      fontSize: ScreenUtil.getInstance().setSp(28),
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(254, 115, 21, 1),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: ScreenUtil.getInstance().setWidth(22),
-                  child: AnimatedBuilder(
-                    animation: _animationController,
-                    builder: (_, Widget child) {
-                      return Row(
-                        children: <Widget>[
-                          Text(
-                            '距下一场',
-                            style: TextStyle(
-                              fontSize: ScreenUtil.getInstance().setSp(28),
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(80, 80, 80, 1),
-                            ),
-                          ),
-                          SizedBox(
-                            width: ScreenUtil.getInstance().setWidth(14),
-                          ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(3),
-                            child: Container(
-                              color: Color.fromRGBO(128, 128, 128, 1),
-                              child: Text(
-                                hoursString,
-                                style: TextStyle(
-                                  fontSize: ScreenUtil.getInstance().setSp(24),
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: ScreenUtil.getInstance().setWidth(8),
-                          ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(3),
-                            child: Container(
-                              color: Color.fromRGBO(128, 128, 128, 1),
-                              child: Text(
-                                minutesString,
-                                style: TextStyle(
-                                  fontSize: ScreenUtil.getInstance().setSp(24),
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: ScreenUtil.getInstance().setWidth(8),
-                          ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(3),
-                            child: Container(
-                              color: Color.fromRGBO(128, 128, 128, 1),
-                              child: Text(
-                                secondsString,
-                                style: TextStyle(
-                                  fontSize: ScreenUtil.getInstance().setSp(24),
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+            child: Countown,
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              children: data.map((item) {
-                return Container(
-                  width: ScreenUtil.getInstance().setWidth(192),
-                  height: ScreenUtil.getInstance().setHeight(264),
-                  margin: EdgeInsets.only(
-                    right: ScreenUtil.getInstance().setWidth(16),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        width: ScreenUtil.getInstance().setWidth(192),
-                        height: ScreenUtil.getInstance().setHeight(192),
-                        child: CachedNetworkImage(
-                          fadeOutDuration: const Duration(milliseconds: 300),
-                          fadeInDuration: const Duration(milliseconds: 700),
-                          fit: BoxFit.fill,
-                          imageUrl:
-                              'https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg',
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
-                        ),
-                      ),
-                      SizedBox(
-                        height: ScreenUtil.getInstance().setHeight(16),
-                      ),
-                      Container(
-                        width: ScreenUtil.getInstance().setWidth(192),
-                        height: ScreenUtil.getInstance().setHeight(54),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              '￥69',
-                              style: TextStyle(
-                                fontSize: ScreenUtil.getInstance().setSp(36),
-                                color: Color.fromRGBO(254, 115, 21, 1),
-                              ),
-                            ),
-                            SizedBox(
-                              width: ScreenUtil.getInstance().setWidth(10),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                top: ScreenUtil.getInstance().setHeight(14),
-                              ),
-                              child: Text(
-                                '￥169',
-                                style: TextStyle(
-                                  fontSize: ScreenUtil.getInstance().setSp(20),
-                                  color: Color.fromRGBO(80, 80, 80, 0.43),
-                                  decoration: TextDecoration.lineThrough,
-                                  decorationColor:
-                                      Color.fromRGBO(80, 80, 80, 0.43),
-                                  decorationStyle: TextDecorationStyle.solid,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }).toList(),
-            ),
+            child: SpikeGoods,
           ),
         ],
       ),
