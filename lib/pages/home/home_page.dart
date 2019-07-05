@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app/style/style.dart';
 import 'package:shop_app/data/home.dart';
 import 'package:shop_app/utils/log_util.dart';
@@ -6,6 +7,8 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:shop_app/components/topbar.dart';
 import 'package:shop_app/tools/arc_clipper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shop_app/model/kingkong.dart';
+import 'package:shop_app/components/menue.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,6 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin<HomePage> {
   @override
+  List<KingKongItem> kingKongItems;
   ScrollController _scrollViewController;
   GlobalKey _keyFilter = GlobalKey();
   Size _sizeRed;
@@ -40,7 +44,7 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
-
+    kingKongItems = KingKongList.fromJson(menueDataJson['items']).items;
     WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
   }
 
@@ -48,6 +52,7 @@ class _HomePageState extends State<HomePage>
     var v = Column(
       children: <Widget>[
         _buildSwiperImageWidget(),
+        _buildSwiperButtonWidget(),
       ],
     );
 
@@ -126,7 +131,7 @@ class _HomePageState extends State<HomePage>
             child: Container(
               height: 150,
               child: ClipPath(
-                clipper: new ArcClipper(),
+                clipper: ArcClipper(),
                 child: Stack(
                   children: <Widget>[
                     Container(
@@ -136,16 +141,36 @@ class _HomePageState extends State<HomePage>
                         fadeInDuration: const Duration(milliseconds: 700),
                         fit: BoxFit.fill,
                         imageUrl: banner_images[index],
-                        errorWidget: (context, url, error) =>
-                            new Icon(Icons.error),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildSwiperButtonWidget() {
+    List data = [];
+    for (var i = 0; i < kingKongItems.length; ++i) {
+      data.add(kingKongItems[i]);
+    }
+    return Container(
+      height: ScreenUtil.getInstance().setHeight(160) * 2,
+      child: GridView.count(
+        crossAxisCount: 5,
+        crossAxisSpacing: 0,
+        physics: NeverScrollableScrollPhysics(),
+        children: data.map((item) {
+          return HomeKingKongWidget(
+            data: item,
+            fontColor: (menueDataJson['config'] as dynamic)['color'],
+          );
+        }).toList(),
       ),
     );
   }
