@@ -38,7 +38,7 @@ class _MinePageState extends State<MinePage> {
   Widget _buildHeaderWidget() {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: ScreenUtil.getInstance().setHeight(87),
+      height: ScreenUtil.getInstance().setHeight(90),
       padding: EdgeInsets.only(
         right: ScreenUtil.getInstance().setWidth(28),
       ),
@@ -85,14 +85,14 @@ class _MinePageState extends State<MinePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  '233号智械',
+                  '大淼淼',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: ScreenUtil.getInstance().setSp(32),
                   ),
                 ),
                 Text(
-                  '22222222',
+                  '6666666',
                   style: TextStyle(
                     color: Colors.white30,
                     fontSize: ScreenUtil.getInstance().setSp(28),
