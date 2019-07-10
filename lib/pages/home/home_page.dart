@@ -30,10 +30,6 @@ class _HomePageState extends State<HomePage>
   int _currentIndex = 0;
   List _hotWords = [];
 
-  bool _onScroll(ScrollNotification scroll) {
-    return false;
-  }
-
   String get hoursString {
     Duration duration =
         _animationController.duration * _animationController.value;
@@ -111,9 +107,11 @@ class _HomePageState extends State<HomePage>
         _buildSwiperButtonWidget(),
         _buildNewspaperWidget(),
         _buildRecommendGoodsWidget(),
-        _buildAd2vertisingWidget(),
+        _buildAdvertisingWidget(
+            'https://i1.mifile.cn/a4/xmad_15621639904412_QuMpy.jpg'),
         _buildSpikeWidget(),
-        _buildAd3vertisingWidget(),
+        _buildAdvertisingWidget(
+            'https://i1.mifile.cn/a4/xmad_15621639904412_QuMpy.jpg'),
       ],
     );
 
@@ -425,7 +423,7 @@ class _HomePageState extends State<HomePage>
   }
 
   // 广告位
-  Widget _buildAd2vertisingWidget() {
+  Widget _buildAdvertisingWidget(imageUrl) {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(
@@ -433,21 +431,7 @@ class _HomePageState extends State<HomePage>
       ),
       height: ScreenUtil.getInstance().setHeight(288),
       child: GZCacheNetworkImageWidget(
-        imageUrl: 'https://i1.mifile.cn/a4/xmad_15621639904412_QuMpy.jpg',
-      ),
-    );
-  }
-
-  // 广告位
-  Widget _buildAd3vertisingWidget() {
-    return Container(
-      margin: EdgeInsets.only(
-        bottom: ScreenUtil.getInstance().setHeight(26),
-      ),
-      width: MediaQuery.of(context).size.width,
-      height: ScreenUtil.getInstance().setHeight(288),
-      child: GZCacheNetworkImageWidget(
-        imageUrl: 'https://i1.mifile.cn/a4/xmad_15517943282724_lhogK.jpg',
+        imageUrl: imageUrl,
       ),
     );
   }
