@@ -417,6 +417,7 @@ class _HomePageState extends State<HomePage>
       ),
       height: ScreenUtil.getInstance().setHeight(288),
       child: GZCacheNetworkImageWidget(
+        height: ScreenUtil.getInstance().setHeight(288),
         imageUrl: imageUrl,
       ),
     );
@@ -573,7 +574,6 @@ class _HomePageState extends State<HomePage>
     return Container(
       margin: EdgeInsets.only(
         top: ScreenUtil.getInstance().setHeight(26),
-        bottom: ScreenUtil.getInstance().setHeight(26),
       ),
       padding: EdgeInsets.only(
         left: ScreenUtil.getInstance().setWidth(18),
