@@ -52,15 +52,24 @@ class _ShoppingPageState extends State<ShoppingPage> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            _buildCartGoods(),
-            _buildRecommendTitleWidget(),
-            _buildRecommendGoodsWidget(),
-            _buildCartSettlementWidget(),
-          ],
-        ),
+      body: Stack(
+        children: <Widget>[
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                _buildCartGoods(),
+                _buildRecommendTitleWidget(),
+                _buildRecommendGoodsWidget(),
+              ],
+            ),
+          ),
+          Positioned(
+            width: MediaQuery.of(context).size.width,
+            left: 0,
+            bottom: 0,
+            child: _buildCartSettlementWidget(),
+          ),
+        ],
       ),
     );
   }
@@ -266,7 +275,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
     return Container(
       margin: EdgeInsets.only(
         top: ScreenUtil.getInstance().setHeight(32),
-        bottom: ScreenUtil.getInstance().setHeight(32),
+        bottom: ScreenUtil.getInstance().setHeight(124),
       ),
       width: MediaQuery.of(context).size.width,
       child: Wrap(
@@ -407,7 +416,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
                     left: ScreenUtil.getInstance().setWidth(20),
                   ),
                   child: new Text(
-                    "结算(3)",
+                    '结算(3)',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: ScreenUtil.getInstance().setSp(32),
