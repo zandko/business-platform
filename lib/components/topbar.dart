@@ -18,8 +18,12 @@ class GZTopBar extends StatelessWidget {
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     return Container(
       color: Theme.of(context).primaryColor,
-      padding:
-          EdgeInsets.only(top: statusBarHeight, left: 0, right: 0, bottom: 0),
+      padding: EdgeInsets.only(
+        top: statusBarHeight,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      ),
       child: Row(
         children: <Widget>[
           Container(

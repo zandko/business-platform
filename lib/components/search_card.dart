@@ -3,9 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shop_app/data/home.dart';
 import 'package:shop_app/style/style.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GZSearchCardWidget extends StatefulWidget {
   final FocusNode focusNode;
+  final color;
   TextEditingController textEditingController;
   final VoidCallback onTap;
   final bool isShowLeading;
@@ -20,6 +22,7 @@ class GZSearchCardWidget extends StatefulWidget {
   GZSearchCardWidget({
     Key key,
     this.focusNode,
+    this.color,
     this.textEditingController,
     this.onTap,
     this.isShowLeading = true,
@@ -51,25 +54,26 @@ class _GZSearchCardWidgetState extends State<GZSearchCardWidget> {
     _rightWidget ??= Icon(
       GZIcons.camera,
       color: Colors.grey,
-      size: 20,
+      size: ScreenUtil.getInstance().setSp(40),
     );
     _hintText = widget.hintText;
     _hintText ??= searchHintTexts[Random().nextInt(searchHintTexts.length)];
     if (widget.textEditingController == null) {
       widget.textEditingController = TextEditingController();
     }
-
     return searchCard();
   }
 
   Widget searchCard() => Padding(
         padding: const EdgeInsets.only(top: 0, right: 0),
         child: Card(
+          color: widget.color,
           elevation: widget.elevation,
-          // 设置圆角
-          shape: const RoundedRectangleBorder(
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(20.0),
+              Radius.circular(
+                ScreenUtil.getInstance().setWidth(40),
+              ),
             ),
           ),
           child: Padding(
@@ -80,27 +84,35 @@ class _GZSearchCardWidgetState extends State<GZSearchCardWidget> {
               children: <Widget>[
                 widget.isShowLeading
                     ? Padding(
-                        padding: EdgeInsets.only(right: 5, top: 0, left: 5),
+                        padding: EdgeInsets.only(
+                          right: ScreenUtil.getInstance().setWidth(10),
+                          top: 0,
+                          left: ScreenUtil.getInstance().setWidth(10),
+                        ),
                         child: Icon(
                           GZIcons.search_light,
                           color: Colors.grey,
-                          size: 20,
+                          size: ScreenUtil.getInstance().setSp(40),
                         ),
                       )
                     : SizedBox(
-                        width: 10,
+                        width: ScreenUtil.getInstance().setWidth(20),
                       ),
                 Expanded(
                   child: Container(
-                    height: 34,
+                    height: ScreenUtil.getInstance().setHeight(64),
                     child: TextField(
                       autofocus: widget.autofocus,
                       onTap: widget.onTap,
                       focusNode: widget.focusNode,
-                      style: TextStyle(fontSize: 13),
+                      style: TextStyle(
+                        fontSize: ScreenUtil.getInstance().setSp(26),
+                      ),
                       controller: widget.textEditingController,
                       decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.only(top: 8),
+                        contentPadding: EdgeInsets.only(
+                          top: ScreenUtil.getInstance().setHeight(16),
+                        ),
                         border: InputBorder.none,
                         hintText: _hintText,
                         suffixIcon: widget.textEditingController.text.length ==
@@ -108,17 +120,20 @@ class _GZSearchCardWidgetState extends State<GZSearchCardWidget> {
                                 !widget.isShowSuffixIcon
                             ? SizedBox()
                             : Container(
-                                width: 20.0,
-                                height: 20.0,
+                                width: ScreenUtil.getInstance().setWidth(40),
+                                height: ScreenUtil.getInstance().setHeight(40),
                                 alignment: Alignment.centerRight,
-                                child: new IconButton(
+                                child: IconButton(
                                   alignment: Alignment.centerRight,
-                                  padding: const EdgeInsets.only(right: 6),
-                                  iconSize: 18.0,
+                                  padding: EdgeInsets.only(
+                                    right:
+                                        ScreenUtil.getInstance().setWidth(12),
+                                  ),
+                                  iconSize: ScreenUtil.getInstance().setSp(36),
                                   icon: Icon(
                                     Icons.cancel,
                                     color: Colors.grey[500],
-                                    size: 16,
+                                    size: ScreenUtil.getInstance().setSp(32),
                                   ),
                                   onPressed: () {
                                     setState(() {
@@ -137,7 +152,10 @@ class _GZSearchCardWidgetState extends State<GZSearchCardWidget> {
                 widget.textEditingController.text.length == 0 ||
                         !widget.isShowSuffixIcon
                     ? Padding(
-                        padding: EdgeInsets.only(right: 5), child: _rightWidget)
+                        padding: EdgeInsets.only(
+                          right: ScreenUtil.getInstance().setWidth(10),
+                        ),
+                        child: _rightWidget)
                     : SizedBox(),
               ],
             ),

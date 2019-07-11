@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shop_app/components/topbar.dart';
 import 'package:shop_app/components/cache_network_image.dart';
+import 'package:shop_app/components/search_card.dart';
 
 class CategoryPage extends StatefulWidget {
   @override
@@ -9,6 +9,9 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+  TextEditingController _keywordTextEditingController = TextEditingController();
+  FocusNode _focus = new FocusNode();
+
   List _category = [];
 
   @override
@@ -37,9 +40,55 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        child: AppBar(
+          brightness: Brightness.light,
+          elevation: 0,
+          backgroundColor: Colors.white,
+        ),
+        preferredSize: Size.fromHeight(0),
+      ),
       body: Column(
         children: <Widget>[
-          GZTopBar(),
+          Container(
+            padding: EdgeInsets.only(
+              left: ScreenUtil.getInstance().setWidth(28),
+              right: ScreenUtil.getInstance().setWidth(28),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                  width: 1,
+                  color: Color.fromRGBO(229, 229, 229, 1),
+                ),
+              ),
+            ),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: GZSearchCardWidget(
+                    isShowLeading: true,
+                    elevation: 0,
+                    color: Color.fromRGBO(229, 229, 229, 0.6),
+                    onTap: () {
+                      FocusScope.of(context).requestFocus(
+                        FocusNode(),
+                      );
+                    },
+                    textEditingController: _keywordTextEditingController,
+                    focusNode: _focus,
+                  ),
+                ),
+                Icon(
+                  Icons.message,
+                  size: ScreenUtil.getInstance().setSp(46),
+                  color: Color.fromRGBO(166, 166, 166, 1),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
