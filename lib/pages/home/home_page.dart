@@ -202,13 +202,11 @@ class _HomePageState extends State<HomePage>
                 color: Colors.white,
                 child: Column(
                   children: <Widget>[
-                    Container(
+                    GZCacheNetworkImageWidget(
                       width: ScreenUtil.getInstance().setWidth(354),
                       height: ScreenUtil.getInstance().setHeight(262),
-                      child: GZCacheNetworkImageWidget(
-                        imageUrl:
-                            'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                      ),
+                      imageUrl:
+                          'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
                     ),
                     SizedBox(
                       height: ScreenUtil.getInstance().setHeight(10),
@@ -278,11 +276,9 @@ class _HomePageState extends State<HomePage>
                 clipper: ArcClipper(),
                 child: Stack(
                   children: <Widget>[
-                    Container(
-                      height: 150,
-                      child: GZCacheNetworkImageWidget(
-                        imageUrl: banner_images[index],
-                      ),
+                    GZCacheNetworkImageWidget(
+                      height: ScreenUtil.getInstance().setHeight(300),
+                      imageUrl: banner_images[index],
                     ),
                   ],
                 ),
@@ -383,37 +379,27 @@ class _HomePageState extends State<HomePage>
       width: MediaQuery.of(context).size.width,
       height: ScreenUtil.getInstance().setHeight(534),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.only(
-              right: ScreenUtil.getInstance().setWidth(10),
-            ),
+          GZCacheNetworkImageWidget(
             width: ScreenUtil.getInstance().setWidth(373),
             height: ScreenUtil.getInstance().setHeight(534),
-            child: GZCacheNetworkImageWidget(
-              imageUrl: 'https://i1.mifile.cn/a4/xmad_15592788710155_nYAat.jpg',
-            ),
+            imageUrl: 'https://i1.mifile.cn/a4/xmad_15592788710155_nYAat.jpg',
           ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(367),
                 height: ScreenUtil.getInstance().setHeight(258),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://i1.mifile.cn/a4/xmad_15621496532895_qtPax.jpg',
-                ),
+                imageUrl:
+                    'https://i1.mifile.cn/a4/xmad_15621496532895_qtPax.jpg',
               ),
-              Container(
-                margin: EdgeInsets.only(
-                  top: ScreenUtil.getInstance().setHeight(10),
-                ),
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(367),
                 height: ScreenUtil.getInstance().setHeight(264),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://i1.mifile.cn/a4/xmad_15622932130351_aJFEP.jpg',
-                ),
+                imageUrl:
+                    'https://i1.mifile.cn/a4/xmad_15622932130351_aJFEP.jpg',
               ),
             ],
           ),
@@ -535,13 +521,11 @@ class _HomePageState extends State<HomePage>
           ),
           child: Column(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(192),
                 height: ScreenUtil.getInstance().setHeight(192),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/TB1e3Heo_JYBeNjy1zeYXGhzVXa_M2.SS2_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/TB1e3Heo_JYBeNjy1zeYXGhzVXa_M2.SS2_360x360xzq90.jpg_.webp',
               ),
               SizedBox(
                 height: ScreenUtil.getInstance().setHeight(16),

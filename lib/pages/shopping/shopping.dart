@@ -92,13 +92,11 @@ class _ShoppingPageState extends State<ShoppingPage> {
                     });
                   },
                 ),
-                Container(
+                GZCacheNetworkImageWidget(
                   width: ScreenUtil.getInstance().setWidth(150),
                   height: ScreenUtil.getInstance().setHeight(150),
-                  child: GZCacheNetworkImageWidget(
-                    imageUrl:
-                        'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                  ),
+                  imageUrl:
+                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
                 ),
                 Container(
                   padding: EdgeInsets.only(
@@ -289,13 +287,11 @@ class _ShoppingPageState extends State<ShoppingPage> {
               children: <Widget>[
                 Stack(
                   children: <Widget>[
-                    Container(
+                    GZCacheNetworkImageWidget(
                       width: ScreenUtil.getInstance().setWidth(366),
                       height: ScreenUtil.getInstance().setHeight(366),
-                      child: GZCacheNetworkImageWidget(
-                        imageUrl:
-                            'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                      ),
+                      imageUrl:
+                          'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
                     ),
                     Positioned(
                       right: 8.0,

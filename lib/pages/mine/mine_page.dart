@@ -255,12 +255,9 @@ class _MinePageState extends State<MinePage> {
   }
 
   Widget _buildAdvertisingWidget(imageUrl) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
+    return GZCacheNetworkImageWidget(
       height: ScreenUtil.getInstance().setHeight(208),
-      child: GZCacheNetworkImageWidget(
-        imageUrl: imageUrl,
-      ),
+      imageUrl: imageUrl,
     );
   }
 
@@ -277,13 +274,11 @@ class _MinePageState extends State<MinePage> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Expanded(
                 flex: 1,
@@ -321,13 +316,11 @@ class _MinePageState extends State<MinePage> {
           ),
           Row(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Expanded(
                 flex: 1,
@@ -365,13 +358,11 @@ class _MinePageState extends State<MinePage> {
           ),
           Row(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Expanded(
                 flex: 1,
@@ -417,13 +408,11 @@ class _MinePageState extends State<MinePage> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Expanded(
                 flex: 1,
@@ -461,13 +450,11 @@ class _MinePageState extends State<MinePage> {
           ),
           Row(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Expanded(
                 flex: 1,
@@ -505,13 +492,11 @@ class _MinePageState extends State<MinePage> {
           ),
           Row(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Expanded(
                 flex: 1,
@@ -557,13 +542,11 @@ class _MinePageState extends State<MinePage> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Expanded(
                 flex: 1,

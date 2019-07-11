@@ -152,13 +152,11 @@ class _CategoryPageState extends State<CategoryPage> {
       color: Colors.white,
       child: Column(
         children: <Widget>[
-          Container(
+          GZCacheNetworkImageWidget(
             width: ScreenUtil.getInstance().setWidth(520),
             height: ScreenUtil.getInstance().setHeight(186),
-            child: GZCacheNetworkImageWidget(
-              imageUrl:
-                  'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-            ),
+            imageUrl:
+                'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
           ),
           SizedBox(
             height: ScreenUtil.getInstance().setHeight(44),
@@ -210,13 +208,11 @@ class _CategoryPageState extends State<CategoryPage> {
                         return Container(
                           child: Column(
                             children: <Widget>[
-                              Container(
+                              GZCacheNetworkImageWidget(
                                 width: ScreenUtil.getInstance().setWidth(154),
                                 height: ScreenUtil.getInstance().setHeight(154),
-                                child: GZCacheNetworkImageWidget(
-                                  imageUrl:
-                                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                                ),
+                                imageUrl:
+                                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
                               ),
                               SizedBox(
                                 height: ScreenUtil.getInstance().setHeight(15),

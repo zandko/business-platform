@@ -102,11 +102,9 @@ class _FindPageState extends State<FindPage> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {},
-            child: Container(
+            child: GZCacheNetworkImageWidget(
               height: ScreenUtil.getInstance().setHeight(348),
-              child: GZCacheNetworkImageWidget(
-                imageUrl: banner_images[index],
-              ),
+              imageUrl: banner_images[index],
             ),
           );
         },
@@ -135,13 +133,11 @@ class _FindPageState extends State<FindPage> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Text(
                 '精选手机',
@@ -154,13 +150,11 @@ class _FindPageState extends State<FindPage> {
           ),
           Column(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Text(
                 '限时秒杀',
@@ -173,13 +167,11 @@ class _FindPageState extends State<FindPage> {
           ),
           Column(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Text(
                 '小米众筹',
@@ -192,13 +184,11 @@ class _FindPageState extends State<FindPage> {
           ),
           Column(
             children: <Widget>[
-              Container(
+              GZCacheNetworkImageWidget(
                 width: ScreenUtil.getInstance().setWidth(56),
                 height: ScreenUtil.getInstance().setHeight(56),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Text(
                 '在线直播',
@@ -225,13 +215,11 @@ class _FindPageState extends State<FindPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Container(
+          GZCacheNetworkImageWidget(
             width: ScreenUtil.getInstance().setWidth(144),
             height: ScreenUtil.getInstance().setHeight(104),
-            child: GZCacheNetworkImageWidget(
-              imageUrl:
-                  'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-            ),
+            imageUrl:
+                'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
           ),
           Container(
             width: ScreenUtil.getInstance().setWidth(374),
@@ -307,13 +295,10 @@ class _FindPageState extends State<FindPage> {
           height: ScreenUtil.getInstance().setHeight(596),
           child: Column(
             children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
+              GZCacheNetworkImageWidget(
                 height: ScreenUtil.getInstance().setHeight(374),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Container(
                 padding: EdgeInsets.all(
@@ -368,13 +353,10 @@ class _FindPageState extends State<FindPage> {
           height: ScreenUtil.getInstance().setHeight(596),
           child: Column(
             children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
+              GZCacheNetworkImageWidget(
                 height: ScreenUtil.getInstance().setHeight(374),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Container(
                 padding: EdgeInsets.all(
@@ -429,13 +411,10 @@ class _FindPageState extends State<FindPage> {
           height: ScreenUtil.getInstance().setHeight(596),
           child: Column(
             children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
+              GZCacheNetworkImageWidget(
                 height: ScreenUtil.getInstance().setHeight(374),
-                child: GZCacheNetworkImageWidget(
-                  imageUrl:
-                      'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                ),
+                imageUrl:
+                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
               ),
               Container(
                 padding: EdgeInsets.all(
