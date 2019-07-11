@@ -14,18 +14,18 @@ class _ShoppingPageState extends State<ShoppingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
+        backgroundColor: Colors.white,
+        elevation: 2.0,
         centerTitle: true,
         title: Text(
           '购物车',
           style: TextStyle(
             fontSize: ScreenUtil.getInstance().setSp(38),
             fontWeight: FontWeight.bold,
-//            color: Color.fromRGBO(80, 80, 80, 1),
-            color: Colors.white,
+            color: Color.fromRGBO(80, 80, 80, 1),
           ),
         ),
-        elevation: 0.3,
-//        backgroundColor: Colors.white,
         actions: <Widget>[
           Row(
             children: <Widget>[
@@ -37,16 +37,14 @@ class _ShoppingPageState extends State<ShoppingPage> {
                   '编辑',
                   style: TextStyle(
                     fontSize: ScreenUtil.getInstance().setSp(36),
-//                    color: Color.fromRGBO(80, 80, 80, 1),
-                    color: Colors.white,
+                    color: Color.fromRGBO(80, 80, 80, 1),
                   ),
                 ),
               ),
               Icon(
                 Icons.message,
                 size: ScreenUtil.getInstance().setSp(46),
-//                color: Color.fromRGBO(80, 80, 80, 1),
-                color: Colors.white,
+                color: Color.fromRGBO(80, 80, 80, 1),
               ),
             ],
           ),
@@ -239,6 +237,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
               '为你推荐',
               style: TextStyle(
                 fontSize: ScreenUtil.getInstance().setSp(36),
+                fontWeight: FontWeight.bold,
                 color: Color.fromRGBO(255, 112, 58, 1),
               ),
             ),
