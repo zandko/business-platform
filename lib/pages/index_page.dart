@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app/pages/home/home_page.dart';
 import 'package:shop_app/pages/category/category_page.dart';
 import 'package:shop_app/pages/find/find_page.dart';
-import 'package:shop_app/pages/shopping/shopping.dart';
+import 'package:shop_app/pages/shopping/shopping_page.dart';
 import 'package:shop_app/pages/mine/mine_page.dart';
 
 class IndexPage extends StatefulWidget {
