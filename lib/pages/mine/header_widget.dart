@@ -16,7 +16,7 @@ class HeaderWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Icon(
-            GZIcons.message_fill,
+            GZIcons.message,
             size: ScreenUtil.getInstance().setSp(46),
             color: Colors.white,
           ),

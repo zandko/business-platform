@@ -111,7 +111,7 @@ class _GZSearchCardWidgetState extends State<GZSearchCardWidget> {
                       controller: widget.textEditingController,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
-                          top: ScreenUtil.getInstance().setHeight(16),
+                          top: ScreenUtil.getInstance().setHeight(12),
                         ),
                         border: InputBorder.none,
                         hintText: _hintText,

@@ -68,31 +68,56 @@ class _ShoppingPageState extends State<ShoppingPage> {
           ),
         ),
         Icon(
-          GZIcons.message_fill,
+          GZIcons.message,
           size: ScreenUtil.getInstance().setSp(46),
-          color: Color.fromRGBO(80, 80, 80, 1),
+          color: Color.fromRGBO(166, 166, 166, 1),
+        ),
+        SizedBox(
+          width: ScreenUtil.getInstance().setWidth(26),
         ),
       ],
     );
   }
 
   Widget _buildAppBarWidget() {
-    return AppBar(
-      brightness: Brightness.light,
-      backgroundColor: Colors.white,
-      elevation: 2.0,
-      centerTitle: true,
-      title: Text(
-        '购物车',
-        style: TextStyle(
-          fontSize: ScreenUtil.getInstance().setSp(38),
-          fontWeight: FontWeight.bold,
-          color: Color.fromRGBO(80, 80, 80, 1),
+    return PreferredSize(
+      child: AppBar(
+        brightness: Brightness.light,
+        backgroundColor: Colors.white,
+        elevation: 1.0,
+        centerTitle: true,
+        title: Text(
+          '购物车',
+          style: TextStyle(
+            fontSize: ScreenUtil.getInstance().setSp(38),
+            fontWeight: FontWeight.bold,
+            color: Color.fromRGBO(80, 80, 80, 1),
+          ),
         ),
+        actions: <Widget>[
+          _buildActionsWidget(),
+        ],
       ),
-      actions: <Widget>[
-        _buildActionsWidget(),
-      ],
+      preferredSize: Size.fromHeight(
+        ScreenUtil.getInstance().setHeight(80),
+      ),
     );
+//    return AppBar(
+//      brightness: Brightness.light,
+//      backgroundColor: Colors.white,
+//      elevation: 1.0,
+//      centerTitle: true,
+//      title: Text(
+//        '购物车',
+//        style: TextStyle(
+//          fontSize: ScreenUtil.getInstance().setSp(38),
+//          fontWeight: FontWeight.bold,
+//          color: Color.fromRGBO(80, 80, 80, 1),
+//        ),
+//      ),
+//      actions: <Widget>[
+//        _buildActionsWidget(),
+//      ],
+//    );
   }
 }

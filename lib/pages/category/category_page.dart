@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app/components/cache_network_image.dart';
 import 'package:shop_app/components/search_card.dart';
+import 'package:shop_app/style/style.dart';
 
 class CategoryPage extends StatefulWidget {
   @override
@@ -82,7 +83,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   ),
                 ),
                 Icon(
-                  Icons.message,
+                  GZIcons.message,
                   size: ScreenUtil.getInstance().setSp(46),
                   color: Color.fromRGBO(166, 166, 166, 1),
                 ),
