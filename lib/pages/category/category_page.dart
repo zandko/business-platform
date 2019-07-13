@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shop_app/components/cache_network_image.dart';
 import 'package:shop_app/components/search_card.dart';
 import 'package:shop_app/style/style.dart';
+import 'package:shop_app/pages/category/left_menu_widget.dart';
+import 'package:shop_app/pages/category/menu_content_widget.dart';
+import 'package:shop_app/data/category.dart';
+import 'package:shop_app/model/category_entity.dart';
+import 'package:shop_app/model/category_data_entity.dart';
+import 'package:shop_app/model/entity_factory.dart';
 
 class CategoryPage extends StatefulWidget {
   @override
@@ -12,30 +17,14 @@ class CategoryPage extends StatefulWidget {
 class _CategoryPageState extends State<CategoryPage> {
   TextEditingController _keywordTextEditingController = TextEditingController();
   FocusNode _focus = new FocusNode();
-
-  List _category = [];
+  List<CategoryItem> categoryItem;
+  CategoryDataEntity categoryDataEntity;
 
   @override
   void initState() {
     super.initState();
-    _category.add('新品');
-    _category.add('手机');
-    _category.add('电视');
-    _category.add('电脑');
-    _category.add('家电');
-    _category.add('路由');
-    _category.add('智能');
-    _category.add('电源');
-    _category.add('耳机');
-    _category.add('音响');
-    _category.add('礼品');
-    _category.add('家电');
-    _category.add('智能');
-    _category.add('电源');
-    _category.add('耳机');
-    _category.add('音响');
-    _category.add('礼品');
-    _category.add('家电');
+    categoryItem = EntityFactory.generateOBJ<CategoryEntity>(category).items;
+    categoryDataEntity = EntityFactory.generateOBJ<CategoryDataEntity>(categoryData);
   }
 
   @override
@@ -95,145 +84,14 @@ class _CategoryPageState extends State<CategoryPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 SingleChildScrollView(
-                  child: _buildLeftMenuWidget(),
+                  child: LeftMenuWidget(categoryItem: categoryItem),
                 ),
                 SingleChildScrollView(
-                  child: _buildLeftMenuContentWidget(),
+                  child: MenuContentWidget(
+                      categoryDataEntity: categoryDataEntity),
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildLeftMenuWidget() {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: _category.map((item) {
-          return Container(
-            alignment: Alignment.center,
-            width: ScreenUtil.getInstance().setWidth(168),
-            height: ScreenUtil.getInstance().setHeight(74),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  width: ScreenUtil.getInstance().setWidth(1),
-                  color: Color.fromRGBO(80, 80, 80, 0.1),
-                ),
-                right: BorderSide(
-                  width: ScreenUtil.getInstance().setWidth(1),
-                  color: Color.fromRGBO(80, 80, 80, 0.1),
-                ),
-              ),
-            ),
-            child: Text(
-              item,
-              style: TextStyle(
-                fontSize: ScreenUtil.getInstance().setSp(28),
-                color: Color.fromRGBO(80, 80, 80, 1),
-              ),
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
-
-  _buildLeftMenuContentWidget() {
-    return Container(
-      padding: EdgeInsets.fromLTRB(
-          ScreenUtil.getInstance().setWidth(30),
-          ScreenUtil.getInstance().setHeight(16),
-          ScreenUtil.getInstance().setWidth(30),
-          0),
-      width: ScreenUtil.getInstance().setWidth(582),
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          GZCacheNetworkImageWidget(
-            width: ScreenUtil.getInstance().setWidth(520),
-            height: ScreenUtil.getInstance().setHeight(186),
-            imageUrl:
-                'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-          ),
-          SizedBox(
-            height: ScreenUtil.getInstance().setHeight(44),
-          ),
-          Column(
-            children: [1, 2, 3].map((item) {
-              return Container(
-                margin: EdgeInsets.only(
-                  bottom: ScreenUtil.getInstance().setHeight(32),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(
-                            right: ScreenUtil.getInstance().setWidth(10),
-                          ),
-                          width: ScreenUtil.getInstance().setWidth(50),
-                          height: 1,
-                          color: Color.fromRGBO(56, 56, 56, 0.5),
-                        ),
-                        Text(
-                          '手机',
-                          style: TextStyle(
-                            fontSize: ScreenUtil.getInstance().setSp(28),
-                            color: Color.fromRGBO(56, 56, 56, 1),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                            left: ScreenUtil.getInstance().setWidth(10),
-                          ),
-                          width: ScreenUtil.getInstance().setWidth(50),
-                          height: 1,
-                          color: Color.fromRGBO(56, 56, 56, 0.5),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: ScreenUtil.getInstance().setHeight(46),
-                    ),
-                    Wrap(
-                      spacing: ScreenUtil.getInstance().setWidth(30),
-                      runSpacing: ScreenUtil.getInstance().setHeight(42),
-                      children: [1, 2, 3, 4, 5, 6].map((item) {
-                        return Container(
-                          child: Column(
-                            children: <Widget>[
-                              GZCacheNetworkImageWidget(
-                                width: ScreenUtil.getInstance().setWidth(154),
-                                height: ScreenUtil.getInstance().setHeight(154),
-                                imageUrl:
-                                    'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
-                              ),
-                              SizedBox(
-                                height: ScreenUtil.getInstance().setHeight(15),
-                              ),
-                              Text(
-                                '红米5',
-                                style: TextStyle(
-                                  fontSize: ScreenUtil.getInstance().setSp(26),
-                                  color: Color.fromRGBO(128, 128, 128, 1),
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ),
-              );
-            }).toList(),
           ),
         ],
       ),
