@@ -1,15 +1,29 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shop_app/model/menu_entity.dart';
 
-class HomeKingKongWidget extends StatelessWidget {
-  final data;
-  final String fontColor;
-  HomeKingKongWidget({this.data, this.fontColor});
+class MenuWidget extends StatelessWidget {
+  final List<ManuItems> manuItems;
+
+  MenuWidget({Key key, this.manuItems}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    var colorInt = int.parse(fontColor.replaceAll('#', '0x'));
-    Color color = Color(colorInt).withOpacity(1.0);
+    return Container(
+      height: ScreenUtil.getInstance().setHeight(160) * 2,
+      child: GridView.count(
+        crossAxisCount: 5,
+        crossAxisSpacing: 0,
+        physics: NeverScrollableScrollPhysics(),
+        children: manuItems.map((item) {
+          return _buildMenuItemWidget(item);
+        }).toList(),
+      ),
+    );
+  }
+
+  Widget _buildMenuItemWidget(ManuItems manuItems) {
     return Container(
       height: ScreenUtil.getInstance().setHeight(160),
       width: ScreenUtil.getInstance().setWidth(116),
@@ -19,16 +33,16 @@ class HomeKingKongWidget extends StatelessWidget {
           CachedNetworkImage(
             width: ScreenUtil.getInstance().setWidth(116),
             height: ScreenUtil.getInstance().setHeight(94),
-            imageUrl: data.picUrl,
+            imageUrl: manuItems.picUrl,
             errorWidget: (context, url, error) => Icon(Icons.error),
           ),
           Text(
-            data.title,
+            manuItems.title,
             style: TextStyle(
               fontSize: 13.0,
               height: 1.5,
               decoration: TextDecoration.none,
-              color: color,
+              color: Color.fromRGBO(80, 80, 80, 1),
             ),
           ),
         ],

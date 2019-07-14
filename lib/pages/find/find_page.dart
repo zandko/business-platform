@@ -28,8 +28,6 @@ class _FindPageState extends State<FindPage> {
     super.initState();
 
     newspaperItem = EntityFactory.generateOBJ<NewspaperEntity>(newspaper).newspaper;
-
-    print(newspaperItem);
   }
 
   @override

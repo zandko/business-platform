@@ -8,7 +8,6 @@ List<String> banner_images = [
 ];
 
 var menueDataJson = {
-  "config": {"color": "#555666", "pic_url": ""},
   "items": [
     {
       "jump_url": "",

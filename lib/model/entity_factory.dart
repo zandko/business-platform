@@ -1,6 +1,7 @@
 import 'package:shop_app/model/cart_goods_entity.dart';
 import 'package:shop_app/model/category_data_entity.dart';
 import 'package:shop_app/model/category_entity.dart';
+import 'package:shop_app/model/menu_entity.dart';
 import 'package:shop_app/model/newspaper_entity.dart';
 import 'package:shop_app/model/optins_set_entity.dart';
 import 'package:shop_app/model/order_menu_status_entity.dart';
@@ -16,6 +17,8 @@ class EntityFactory {
       return CategoryDataEntity.fromJson(json) as T;
     } else if (T.toString() == "CategoryEntity") {
       return CategoryEntity.fromJson(json) as T;
+    } else if (T.toString() == "MenuEntity") {
+      return MenuEntity.fromJson(json) as T;
     } else if (T.toString() == "NewspaperEntity") {
       return NewspaperEntity.fromJson(json) as T;
     } else if (T.toString() == "OptinsSetEntity") {
