@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-import '../code.dart';
-import '../result_data.dart';
+import 'package:shop_app/service/code.dart';
+import 'package:shop_app/service/result_data.dart';
 
 // Token拦截器
 class ResponseInterceptors extends InterceptorsWrapper {
@@ -13,7 +13,7 @@ class ResponseInterceptors extends InterceptorsWrapper {
           option.contentType.primaryType == "text") {
         return new ResultData(response.data, true, Code.SUCCESS);
       }
-      if (response.statusCode == 200 || response.statusCode == 201 || response.statusCode == 204) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return new ResultData(response.data, true, Code.SUCCESS,
             headers: response.headers);
       }

@@ -1,12 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:shop_app/service/code.dart';
+
 import 'dart:collection';
 
-import 'code.dart';
-import 'interceptors/error_interceptor.dart';
-import 'interceptors/header_interceptor.dart';
-import 'interceptors/log_interceptor.dart';
-import 'interceptors/response_interceptor.dart';
-import 'result_data.dart';
+import 'package:shop_app/service/interceptors/error_interceptor.dart';
+import 'package:shop_app/service/interceptors/header_interceptor.dart';
+import 'package:shop_app/service/interceptors/log_interceptor.dart';
+
+import 'package:shop_app/service/interceptors/response_interceptor.dart';
+import 'package:shop_app/service/interceptors/token_interceptor.dart';
+import 'package:shop_app/service/result_data.dart';
 
 ///http请求
 class HttpManager {
@@ -15,8 +18,12 @@ class HttpManager {
 
   Dio _dio = new Dio(); // 使用默认配置
 
+  final TokenInterceptors _tokenInterceptors = new TokenInterceptors();
+
   HttpManager() {
     _dio.interceptors.add(new HeaderInterceptors());
+
+    _dio.interceptors.add(_tokenInterceptors);
 
     _dio.interceptors.add(new LogsInterceptors());
 
@@ -71,6 +78,16 @@ class HttpManager {
       return resultError(response.data);
     }
     return response.data;
+  }
+
+  ///清除授权
+  clearAuthorization() {
+    _tokenInterceptors.clearAuthorization();
+  }
+
+  ///获取授权token
+  getAuthorization() async {
+    return _tokenInterceptors.getAuthorization();
   }
 }
 

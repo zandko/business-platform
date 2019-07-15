@@ -1,4 +1,8 @@
-// 网络结果数据
+/**
+ * 网络结果数据
+ * Created by chenjianrun
+ * Date: 2018-07-16
+ */
 class ResultData {
   var data;
   bool result;
