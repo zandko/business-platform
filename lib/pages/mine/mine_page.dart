@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app/components/cache_network_image.dart';
+import 'package:shop_app/style/style.dart';
 
-import 'package:shop_app/pages/mine/header_widget.dart';
 import 'package:shop_app/pages/mine/information_widget.dart';
 import 'package:shop_app/pages/mine/order_status_widget.dart';
 import 'package:shop_app/pages/mine/my_option_list_widget.dart';
@@ -56,7 +56,7 @@ class _MinePageState extends State<MinePage>
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            HeaderWidget(),
+            _buildHeaderWidget(),
             InformationWidget(
                 avatar: avatar, name: name, introduction: introduction),
             OrderStatusWidget(orderMenuStatusItem: orderMenuStatusItem),
@@ -68,6 +68,27 @@ class _MinePageState extends State<MinePage>
                 title: optinsSetSettings.title),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderWidget() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: ScreenUtil.getInstance().setHeight(90),
+      padding: EdgeInsets.only(
+        right: ScreenUtil.getInstance().setWidth(28),
+      ),
+      color: Theme.of(context).primaryColor,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Icon(
+            GZIcons.message,
+            size: ScreenUtil.getInstance().setSp(46),
+            color: Colors.white,
+          ),
+        ],
       ),
     );
   }
