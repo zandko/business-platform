@@ -39,8 +39,7 @@ class MenuWidget extends StatelessWidget {
           Text(
             manuItems.title,
             style: TextStyle(
-              fontSize: 13.0,
-              height: 1.5,
+              fontSize: ScreenUtil.getInstance().setSp(26),
               decoration: TextDecoration.none,
               color: Color.fromRGBO(80, 80, 80, 1),
             ),

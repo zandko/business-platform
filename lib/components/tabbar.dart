@@ -15,7 +15,8 @@ class GZTabBarWidget extends StatefulWidget implements PreferredSizeWidget {
   _GZTabBarWidgetState createState() => _GZTabBarWidgetState();
 
   @override
-  Size get preferredSize => Size.fromHeight(30);
+  Size get preferredSize =>
+      Size.fromHeight(ScreenUtil.getInstance().setHeight(60));
 }
 
 class _GZTabBarWidgetState extends State<GZTabBarWidget> {
@@ -57,16 +58,23 @@ class _GZTabBarWidgetState extends State<GZTabBarWidget> {
                               SizedBox(
                                 height: ScreenUtil.getInstance().setHeight(6),
                               ),
-                              Text(i.title),
+                              Text(
+                                i.title,
+                                style: TextStyle(
+                                  fontSize: ScreenUtil.getInstance().setSp(28),
+                                ),
+                              ),
                               SizedBox(
                                 height: ScreenUtil.getInstance().setHeight(6),
                               ),
                               widget.tabModels.indexOf(i) == widget.currentIndex
                                   ? ClipRRect(
-                                      borderRadius: BorderRadius.circular(7),
+                                      borderRadius: BorderRadius.circular(
+                                        ScreenUtil.getInstance().setWidth(14),
+                                      ),
                                       child: Container(
                                         padding: EdgeInsets.all(
-                                          ScreenUtil.getInstance().setWidth(2),
+                                          ScreenUtil.getInstance().setWidth(1),
                                         ),
                                         color: Color(0xFFfe5100),
                                         child: Text(
@@ -95,8 +103,8 @@ class _GZTabBarWidgetState extends State<GZTabBarWidget> {
                             width: ScreenUtil.getInstance().setWidth(20),
                           ),
                           Container(
-                            width: 1,
-                            height: ScreenUtil.getInstance().setHeight(60),
+                            width: ScreenUtil.getInstance().setWidth(1),
+                            height: ScreenUtil.getInstance().setHeight(50),
                             color: Color(0xFFc9c9ca),
                           ),
                         ],

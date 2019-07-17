@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shop_app/pages/shopping/settlement/settlement_page.dart';
 
 class CartSettlementWidget extends StatefulWidget {
   @override
@@ -57,22 +58,32 @@ class _CartSettlementWidgetState extends State<CartSettlementWidget> {
                       fontSize: ScreenUtil.getInstance().setSp(32),
                     ),
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: EdgeInsets.only(
-                      left: ScreenUtil.getInstance().setWidth(20),
-                    ),
-                    child: new Text(
-                      '结算(3)',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: ScreenUtil.getInstance().setSp(32),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SettlementPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(
+                        left: ScreenUtil.getInstance().setWidth(20),
                       ),
+                      child: Text(
+                        '结算(3)',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: ScreenUtil.getInstance().setSp(32),
+                        ),
+                      ),
+                      width: ScreenUtil.getInstance().setWidth(206),
+                      height: ScreenUtil.getInstance().setHeight(104),
+                      color: Theme.of(context).primaryColor,
                     ),
-                    width: ScreenUtil.getInstance().setWidth(206),
-                    height: ScreenUtil.getInstance().setHeight(104),
-                    color: Theme.of(context).primaryColor,
-                  )
+                  ),
                 ],
               ),
             ),

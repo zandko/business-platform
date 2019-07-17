@@ -141,6 +141,7 @@ class _AllOrderPgeState extends State<AllOrderPge> with TickerProviderStateMixin
     return Expanded(
       child: Container(
         child: TabBarView(
+          controller: _controller,
           children: [1, 2, 3, 4].map((item) {
             return _buildOrderInfoWidget();
           }).toList(),

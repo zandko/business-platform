@@ -31,18 +31,6 @@ class RecommendGoodsItem extends StatelessWidget {
           height: ScreenUtil.getInstance().setHeight(366),
           imageUrl: recommandGoodsItem.picUrl,
         ),
-//        Positioned(
-//          right: 8.0,
-//          bottom: 8.0,
-//          child: Text(
-//            '${recommandGoodsItem.praise} 人好评',
-//            style: TextStyle(
-//              fontSize: ScreenUtil.getInstance().setSp(28),
-//              fontWeight: FontWeight.bold,
-//              color: Colors.white,
-//            ),
-//          ),
-//        ),
       ],
     );
   }

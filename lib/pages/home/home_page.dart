@@ -167,7 +167,7 @@ class _HomePageState extends State<HomePage>
               bottom: PreferredSize(
                 preferredSize: Size(
                   double.infinity,
-                  ScreenUtil.getInstance().setHeight(92),
+                  ScreenUtil.getInstance().setHeight(96),
                 ),
                 child: GZTabBarWidget(
                   tabController: _controller,
