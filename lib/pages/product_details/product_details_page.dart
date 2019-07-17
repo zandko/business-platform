@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:shop_app/data/home.dart';
 import 'package:shop_app/components/cache_network_image.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:html/dom.dart' as dom;
 
 class ProductDetailsPage extends StatefulWidget {
   @override
@@ -28,6 +30,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   _buildAccessoriesWidget(),
                   _buildEvaluationWidget(),
                   _buildParameterWidget(),
+                  _buildDetailOrParameterWidget(),
                 ],
               ),
             ),
@@ -508,12 +511,63 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             width: 1,
             color: Colors.black12,
           ),
-          Text('参数', style: TextStyle(
-            color: Color.fromRGBO(80, 80, 80, 1),
-            fontSize: ScreenUtil.getInstance().setSp(28),
-          ),),
+          Text(
+            '参数',
+            style: TextStyle(
+              color: Color.fromRGBO(80, 80, 80, 1),
+              fontSize: ScreenUtil.getInstance().setSp(28),
+            ),
+          ),
         ],
       ),
+    );
+  }
+
+  Widget _buildDetailOrParameterWidget() {
+    return Html(
+      data: """
+              <img src='https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/012ed82dfddfacabd040b9de4bfb3f69.jpg?w=1080&h=655&bg=FFFFFF' alt=''>
+              <img src='https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/4df2a2494d4585205db5672d40d68633.jpg?w=1080&h=670&bg=FFFFFF' alt=''>
+              <img src='https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/fd52ddef6ca9f17552947c63804115a2.jpg?w=1080&h=1530&bg=FFFFFF' alt=''>
+            """,
+      linkStyle: const TextStyle(
+        color: Colors.redAccent,
+        decorationColor: Colors.redAccent,
+        decoration: TextDecoration.underline,
+      ),
+      onLinkTap: (url) {
+        print("Opening $url...");
+      },
+      onImageTap: (src) {
+        print(src);
+      },
+      customRender: (node, children) {
+        if (node is dom.Element) {
+          switch (node.localName) {
+            case "custom_tag":
+              return Column(children: children);
+          }
+        }
+        return null;
+      },
+      customTextAlign: (dom.Node node) {
+        if (node is dom.Element) {
+          switch (node.localName) {
+            case "p":
+              return TextAlign.justify;
+          }
+        }
+        return null;
+      },
+      customTextStyle: (dom.Node node, TextStyle baseStyle) {
+        if (node is dom.Element) {
+          switch (node.localName) {
+            case "p":
+              return baseStyle.merge(TextStyle(height: 2, fontSize: 20));
+          }
+        }
+        return baseStyle;
+      },
     );
   }
 }

@@ -31,6 +31,7 @@ dependencies:
   shared_preferences: ^0.5.3+1
   cached_network_image: ^1.0.0
   provider: ^3.0.0+1
+  flutter_html: ^0.10.4
 
 dev_dependencies:
   flutter_test:
