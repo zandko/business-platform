@@ -9,19 +9,8 @@
 **如你想接收更新消息，你可以Watch下，有问题请提到Issues。**
 
 # 示例图片
-<img src="https://github.com/push-over/shop_app/blob/master/preview_images/首页.png" width="414" hegiht="736" align=center />
-
-<img src="https://github.com/push-over/shop_app/blob/master/preview_images/首页2.png" width="414" hegiht="736" align=center />
-
-<img src="https://github.com/push-over/shop_app/blob/master/preview_images/商品详情.png" width="414" hegiht="736" align=center />
-
-<img src="https://github.com/push-over/shop_app/blob/master/preview_images/我的.png" width="414" hegiht="736" align=center />
-
-<img src="https://github.com/push-over/shop_app/blob/master/preview_images/我的订单.png" width="414" hegiht="736" align=center />
-
-<img src="https://github.com/push-over/shop_app/blob/master/preview_images/购物车.PNG" width="414" hegiht="736" align=center />
-
-<img src="https://github.com/push-over/shop_app/blob/master/preview_images/发现.png" width="414" hegiht="736" align=center />
-
-<img src="https://github.com/push-over/shop_app/blob/master/preview_images/分类.png" width="414" hegiht="736" align=center />
+<img src="https://github.com/push-over/shop_app/blob/master/preview_images/首页.png" width="414" align=center /><img src="https://github.com/push-over/shop_app/blob/master/preview_images/首页2.png" width="414" align=center />
+<img src="https://github.com/push-over/shop_app/blob/master/preview_images/商品详情.png" width="414" align=center /><img src="https://github.com/push-over/shop_app/blob/master/preview_images/我的.png" width="414" align=center />
+<img src="https://github.com/push-over/shop_app/blob/master/preview_images/我的订单.png" width="414"  align=center /><img src="https://github.com/push-over/shop_app/blob/master/preview_images/购物车.PNG" width="414" align=center />
+<img src="https://github.com/push-over/shop_app/blob/master/preview_images/发现.png" width="414" hegiht="736" align=center /><img src="https://github.com/push-over/shop_app/blob/master/preview_images/分类.png" width="414" hegiht="736" align=center />
 
