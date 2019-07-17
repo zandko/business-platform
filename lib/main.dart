@@ -36,15 +36,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: MaterialApp(
-        title: "毕业设计",
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: GZColors.primarySwatch,
-        ),
-        home: IndexPage(),
+    return MaterialApp(
+      title: "Flutter demo",
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: GZColors.primarySwatch,
       ),
+      home: IndexPage(),
     );
   }
 }

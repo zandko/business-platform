@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app/model/order_menu_status_entity.dart';
+import 'package:shop_app/pages/mine/order/all_order_page.dart';
 
 class OrderStatusWidget extends StatelessWidget {
   final List<OrderMenuStatusItem> orderMenuStatusItem;
@@ -15,14 +16,14 @@ class OrderStatusWidget extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: <Widget>[
-          _buildMyAllOrderWidget(),
+          _buildMyAllOrderWidget(context),
           _buildMenuStatusWidget(),
         ],
       ),
     );
   }
 
-  Widget _buildMyAllOrderWidget() {
+  Widget _buildMyAllOrderWidget(context) {
     return Container(
       padding: EdgeInsets.only(
         left: ScreenUtil.getInstance().setWidth(28),
@@ -47,21 +48,31 @@ class OrderStatusWidget extends StatelessWidget {
               color: Color.fromRGBO(80, 80, 80, 1),
             ),
           ),
-          Row(
-            children: <Widget>[
-              Text(
-                '全部订单',
-                style: TextStyle(
-                  fontSize: ScreenUtil.getInstance().setSp(26),
-                  color: Color.fromRGBO(166, 166, 166, 1),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AllOrderPge(),
                 ),
-              ),
-              Icon(
-                Icons.arrow_forward_ios,
-                size: ScreenUtil.getInstance().setSp(35),
-                color: Color.fromRGBO(153, 153, 153, 1),
-              ),
-            ],
+              );
+            },
+            child: Row(
+              children: <Widget>[
+                Text(
+                  '全部订单',
+                  style: TextStyle(
+                    fontSize: ScreenUtil.getInstance().setSp(26),
+                    color: Color.fromRGBO(166, 166, 166, 1),
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: ScreenUtil.getInstance().setSp(35),
+                  color: Color.fromRGBO(153, 153, 153, 1),
+                ),
+              ],
+            ),
           ),
         ],
       ),

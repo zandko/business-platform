@@ -18,7 +18,8 @@ class MinePage extends StatefulWidget {
   _MinePageState createState() => _MinePageState();
 }
 
-class _MinePageState extends State<MinePage> {
+class _MinePageState extends State<MinePage>
+    with AutomaticKeepAliveClientMixin<MinePage> {
   String avatar;
   String name;
   String introduction;
@@ -29,6 +30,7 @@ class _MinePageState extends State<MinePage> {
   @override
   void initState() {
     super.initState();
+    print('进入');
     avatar =
         'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3024387196,1621670548&fm=27&gp=0.jpg';
     name = '我的小淼酱';
@@ -43,6 +45,7 @@ class _MinePageState extends State<MinePage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: PreferredSize(
         child: AppBar(
@@ -76,4 +79,7 @@ class _MinePageState extends State<MinePage> {
       imageUrl: imageUrl,
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

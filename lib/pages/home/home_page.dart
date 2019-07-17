@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage>
 
   List<ManuItems> manuItems;
 
-  ScrollController _scrollViewController;
   GlobalKey _keyFilter = GlobalKey();
   Size _sizeRed;
   TabController _controller;
@@ -80,6 +79,13 @@ class _HomePageState extends State<HomePage>
     _controller.addListener(_handleTabSelection);
 
     WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    _controller.dispose();
+    super.dispose();
   }
 
   _handleTabSelection() {
@@ -138,7 +144,7 @@ class _HomePageState extends State<HomePage>
 
   Widget _buildHomeBodyWidget() {
     return NestedScrollView(
-        controller: _scrollViewController,
+        controller: ScrollController(),
         headerSliverBuilder: (BuildContext context, bool boxIsScrolled) {
           return <Widget>[
             SliverAppBar(
