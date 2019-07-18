@@ -18,7 +18,13 @@ class InformationWidget extends StatelessWidget {
       ),
       width: MediaQuery.of(context).size.width,
       height: ScreenUtil.getInstance().setHeight(168),
-      color: Theme.of(context).primaryColor,
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        image: DecorationImage(
+            image: AssetImage('static/images/mybg.png'),
+            fit: BoxFit.fill
+        ),
+      ),
       child: Stack(
         children: <Widget>[
           _buildAvatarWidget(),

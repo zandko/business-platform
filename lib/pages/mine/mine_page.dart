@@ -46,13 +46,6 @@ class _MinePageState extends State<MinePage>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      appBar: PreferredSize(
-        child: AppBar(
-          brightness: Brightness.dark,
-          elevation: 0,
-        ),
-        preferredSize: Size.fromHeight(0),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -75,12 +68,19 @@ class _MinePageState extends State<MinePage>
   Widget _buildHeaderWidget() {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: ScreenUtil.getInstance().setHeight(90),
+      height: ScreenUtil.getInstance().setHeight(110),
       padding: EdgeInsets.only(
         right: ScreenUtil.getInstance().setWidth(28),
       ),
-      color: Theme.of(context).primaryColor,
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        image: DecorationImage(
+          image: AssetImage('static/images/mybg.png'),
+          fit: BoxFit.fill
+        ),
+      ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Icon(

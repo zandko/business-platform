@@ -61,7 +61,7 @@ class _GZTabBarWidgetState extends State<GZTabBarWidget> {
                               Text(
                                 i.title,
                                 style: TextStyle(
-                                  fontSize: ScreenUtil.getInstance().setSp(28),
+                                  fontSize: ScreenUtil.getInstance().setSp(26),
                                 ),
                               ),
                               SizedBox(
@@ -74,7 +74,7 @@ class _GZTabBarWidgetState extends State<GZTabBarWidget> {
                                       ),
                                       child: Container(
                                         padding: EdgeInsets.all(
-                                          ScreenUtil.getInstance().setWidth(1),
+                                          ScreenUtil.getInstance().setWidth(2),
                                         ),
                                         color: Color(0xFFfe5100),
                                         child: Text(
