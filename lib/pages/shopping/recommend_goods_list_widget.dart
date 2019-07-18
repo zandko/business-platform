@@ -13,7 +13,6 @@ class RecommendGoodsList extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(
         top: ScreenUtil.getInstance().setHeight(32),
-        bottom: ScreenUtil.getInstance().setHeight(124),
       ),
       width: MediaQuery.of(context).size.width,
       color: Colors.white,

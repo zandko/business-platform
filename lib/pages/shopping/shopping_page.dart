@@ -38,6 +38,9 @@ class _ShoppingPageState extends State<ShoppingPage> {
       body: Stack(
         children: <Widget>[
           SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: ScreenUtil.getInstance().setHeight(124),
+            ),
             child: Column(
               children: <Widget>[
                 CartGoodsList(cartGoodsItem: cartGoodsItem),
