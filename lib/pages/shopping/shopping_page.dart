@@ -105,22 +105,5 @@ class _ShoppingPageState extends State<ShoppingPage> {
         ScreenUtil.getInstance().setHeight(80),
       ),
     );
-//    return AppBar(
-//      brightness: Brightness.light,
-//      backgroundColor: Colors.white,
-//      elevation: 1.0,
-//      centerTitle: true,
-//      title: Text(
-//        '购物车',
-//        style: TextStyle(
-//          fontSize: ScreenUtil.getInstance().setSp(38),
-//          fontWeight: FontWeight.bold,
-//          color: Color.fromRGBO(80, 80, 80, 1),
-//        ),
-//      ),
-//      actions: <Widget>[
-//        _buildActionsWidget(),
-//      ],
-//    );
   }
 }

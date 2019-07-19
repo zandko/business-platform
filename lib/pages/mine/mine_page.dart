@@ -13,6 +13,8 @@ import 'package:shop_app/model/order_menu_status_entity.dart';
 import 'package:shop_app/model/optins_set_entity.dart';
 import 'package:shop_app/model/entity_factory.dart';
 
+import 'package:shop_app/components/notification.dart';
+
 class MinePage extends StatefulWidget {
   @override
   _MinePageState createState() => _MinePageState();
@@ -75,18 +77,26 @@ class _MinePageState extends State<MinePage>
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
         image: DecorationImage(
-          image: AssetImage('static/images/mybg.png'),
-          fit: BoxFit.fill
-        ),
+            image: AssetImage('static/images/mybg.png'), fit: BoxFit.fill),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          Icon(
-            GZIcons.message,
-            size: ScreenUtil.getInstance().setSp(46),
-            color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NotificationPage(),
+                ),
+              );
+            },
+            child: Icon(
+              GZIcons.message,
+              size: ScreenUtil.getInstance().setSp(46),
+              color: Colors.white,
+            ),
           ),
         ],
       ),
