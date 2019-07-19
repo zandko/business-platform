@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shop_app/components/search_card.dart';
-import 'package:shop_app/style/style.dart';
 import 'package:shop_app/components/cache_network_image.dart';
 
-import 'package:shop_app/pages/find/swiper_image_widget.dart';
 import 'package:shop_app/pages/find/menu_widget.dart';
 import 'package:shop_app/pages/find/newspaper_widget.dart';
 
 import 'package:shop_app/data/find.dart';
 import 'package:shop_app/model/newspaper_entity.dart';
 import 'package:shop_app/model/entity_factory.dart';
+import 'package:shop_app/components/topbar.dart';
+import 'package:shop_app/components/swipper.dart';
 
 class FindPage extends StatefulWidget {
   @override
@@ -18,16 +17,14 @@ class FindPage extends StatefulWidget {
 }
 
 class _FindPageState extends State<FindPage> {
-  TextEditingController _keywordTextEditingController = TextEditingController();
-  FocusNode _focus = new FocusNode();
-
   List<NewspaperItem> newspaperItem;
 
   @override
   void initState() {
     super.initState();
 
-    newspaperItem = EntityFactory.generateOBJ<NewspaperEntity>(newspaper).newspaper;
+    newspaperItem =
+        EntityFactory.generateOBJ<NewspaperEntity>(newspaper).newspaper;
   }
 
   @override
@@ -43,50 +40,14 @@ class _FindPageState extends State<FindPage> {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(
-              left: ScreenUtil.getInstance().setWidth(28),
-              right: ScreenUtil.getInstance().setWidth(28),
-            ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border(
-                bottom: BorderSide(
-                  width: 1,
-                  color: Color.fromRGBO(229, 229, 229, 1),
-                ),
-              ),
-            ),
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: GZSearchCardWidget(
-                    isShowLeading: true,
-                    elevation: 0,
-                    color: Color.fromRGBO(229, 229, 229, 0.6),
-                    onTap: () {
-                      FocusScope.of(context).requestFocus(
-                        FocusNode(),
-                      );
-                    },
-                    textEditingController: _keywordTextEditingController,
-                    focusNode: _focus,
-                  ),
-                ),
-                Icon(
-                  GZIcons.message,
-                  size: ScreenUtil.getInstance().setSp(46),
-                  color: Color.fromRGBO(166, 166, 166, 1),
-                ),
-              ],
-            ),
-          ),
+          GZTopBar(color: 'white'),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  SwiperImageWidget(),
+                  SwipperWidget(
+                    height: ScreenUtil.getInstance().setHeight(348),
+                  ),
                   MenuWidget(),
                   _buildMiHomeWidget(),
                   _buildNewspaperWidget(),
@@ -147,7 +108,7 @@ class _FindPageState extends State<FindPage> {
             width: ScreenUtil.getInstance().setWidth(144),
             height: ScreenUtil.getInstance().setHeight(104),
             imageUrl:
-            'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
+                'https://img.alicdn.com/tfscom/i1/2610856926/TB2JAdPhwRkpuFjy1zeXXc.6FXa_!!2610856926.jpg_360x360xzq90.jpg_.webp',
           ),
           Container(
             width: ScreenUtil.getInstance().setWidth(374),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:shop_app/data/home.dart';
 import 'package:shop_app/components/cache_network_image.dart';
+import 'package:shop_app/components/swipper.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:html/dom.dart' as dom;
 
@@ -24,7 +23,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  _buildGoodsAlbumWidget(),
+                  SwipperWidget(
+                    height: ScreenUtil.getInstance().setHeight(824),
+                  ),
                   _buildDescriptionWidget(),
                   _buildDeliveryWidget(),
                   _buildAccessoriesWidget(),
@@ -159,31 +160,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildGoodsAlbumWidget() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: ScreenUtil.getInstance().setHeight(824),
-      child: Swiper(
-        index: 0,
-        loop: true,
-        autoplay: true,
-        duration: 300,
-        pagination: SwiperPagination(),
-        scrollDirection: Axis.horizontal,
-        itemCount: banner_images.length,
-        onTap: (index) {
-          print(index);
-        },
-        itemBuilder: (context, index) {
-          return GZCacheNetworkImageWidget(
-            height: ScreenUtil.getInstance().setHeight(824),
-            imageUrl: banner_images[index],
-          );
-        },
       ),
     );
   }

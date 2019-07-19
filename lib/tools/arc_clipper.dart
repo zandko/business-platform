@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ArcClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    size = new Size(size.width, 150);
+    size = new Size(
+      size.width,
+      ScreenUtil.getInstance().setHeight(300),
+    );
     var path = new Path();
     path.lineTo(0.0, size.height);
 
-    var firstControlPoint = new Offset(size.width / 2, size.height - 20);
+    var firstControlPoint = new Offset(
+      size.width / 2,
+      size.height - ScreenUtil.getInstance().setHeight(40),
+    );
     var firstPoint = new Offset(size.width, size.height);
     path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
         firstPoint.dx, firstPoint.dy);

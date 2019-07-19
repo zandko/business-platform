@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shop_app/components/cache_network_image.dart';
 import 'package:shop_app/style/style.dart';
 
 import 'package:shop_app/pages/mine/information_widget.dart';
@@ -14,6 +13,7 @@ import 'package:shop_app/model/optins_set_entity.dart';
 import 'package:shop_app/model/entity_factory.dart';
 
 import 'package:shop_app/components/notification.dart';
+import 'package:shop_app/components/swipper.dart';
 
 class MinePage extends StatefulWidget {
   @override
@@ -55,8 +55,9 @@ class _MinePageState extends State<MinePage>
             InformationWidget(
                 avatar: avatar, name: name, introduction: introduction),
             OrderStatusWidget(orderMenuStatusItem: orderMenuStatusItem),
-            _buildAdvertisingWidget(
-                'https://i1.mifile.cn/a4/xmad_15621639904412_QuMpy.jpg'),
+            SwipperWidget(
+              height: ScreenUtil.getInstance().setHeight(208),
+            ),
             MyOptionListWidget(optinsSetItem: optinsSetItem),
             MyOptionSettingWidget(
                 picUrl: optinsSetSettings.picUrl,
@@ -100,13 +101,6 @@ class _MinePageState extends State<MinePage>
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildAdvertisingWidget(imageUrl) {
-    return GZCacheNetworkImageWidget(
-      height: ScreenUtil.getInstance().setHeight(208),
-      imageUrl: imageUrl,
     );
   }
 

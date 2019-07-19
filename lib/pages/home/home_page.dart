@@ -5,11 +5,11 @@ import 'package:shop_app/data/home.dart';
 import 'package:shop_app/model/tab.dart';
 import 'package:shop_app/components/topbar.dart';
 import 'package:shop_app/components/tabbar.dart';
+import 'package:shop_app/components/swipper.dart';
 
 import 'package:shop_app/pages/home/advertising_widget.dart';
 import 'package:shop_app/pages/home/category_goods_widget.dart';
 import 'package:shop_app/pages/home/newspaper_widget.dart';
-import 'package:shop_app/pages/home/swiper_image_widget.dart';
 import 'package:shop_app/pages/home/recommend_goods_widget.dart';
 import 'package:shop_app/pages/home/spik_widget.dart';
 import 'package:shop_app/pages/home/menu_widget.dart';
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage>
               key: _keyFilter,
             ),
           ),
-          GZTopBar(),
+          GZTopBar(color: 'orange'),
           Expanded(
             child: _buildHomeBodyWidget(),
           ),
@@ -127,7 +127,10 @@ class _HomePageState extends State<HomePage>
   Widget _buildHomeContentWidget() {
     return Column(
       children: <Widget>[
-        SwiperImageWidget(),
+        SwipperWidget(
+          height: ScreenUtil.getInstance().setHeight(300),
+          clipPath: true,
+        ),
         MenuWidget(manuItems: manuItems),
         NewspaperWidget(),
         RecommendGoodsWidget(),
